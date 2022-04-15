@@ -14,14 +14,14 @@ const getColumns = (imgarr, col) => {
     sum += img.height;
   });
 
-  let threshold = Math.floor(sum / col);
+
+  let threshold = Math.floor(sum / 4);
   let current = 0;
   let l = 0;
 
   imgarr.forEach(img => {
-    console.log(l)
     if ((current + img.height) >= threshold) {
-      if (l != col - 1) { l += 1 }
+      if (l !== col - 1) { l += 1 }
       current = img.height;
       images[l].push(img)
     } else {
@@ -36,11 +36,11 @@ function Gallery({ imgarr }) {
   let [columns, setColumns] = useState([]);
 
   useEffect(() => {
-    let mql = window.matchMedia("all and (max-width: 800px)")
+    let mql = window.matchMedia("all and (max-width: 1000px)")
     if (mql.matches) {
       setColumns(getColumns(imgarr, 2));
     } else {
-      setColumns(getColumns(imgarr, 4));
+      setColumns(getColumns(imgarr, 5));
     }
   }, []);
 
