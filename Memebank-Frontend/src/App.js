@@ -1,18 +1,23 @@
 import React, { Fragment } from 'react';
 import './App.css';
-import Gallery from './gallery/Gallery'
 import Header from './Header'
-import getData from './data'
+import Login from './Login'
+import {Routes, Route} from 'react-router-dom';
+import Home from "./Home";
+import Upload from "./gallery/Upload";
 
 
 function App() {
-  let images = getData();
   return (
     <Fragment>
       <Header />
-      <div className="gallery">
-        <Gallery imgarr={images} />
-      </div>
+        <main>
+            <Routes>
+                <Route path='/login' element={<Login />} />
+                <Route path='/' element={<Home />} />
+                <Route path='/Upload' element={<Upload />} />
+            </Routes>
+        </main>
     </Fragment>
   );
 }
