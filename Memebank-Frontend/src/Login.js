@@ -4,6 +4,9 @@ import {useMutation} from "react-query";
 import { Navigate } from 'react-router-dom';
 import {Avatar} from "@material-ui/core";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import TextField from '@mui/material/TextField';
+import {blue} from "@mui/material/colors";
+import Button from "@mui/material/Button";
 
 function Login() {
 
@@ -42,32 +45,46 @@ function Login() {
     return (
         <div className="login" >
             <div className="container">
+                <br/>
+                <br/>
+                <br/>
                 <div className="row">
                     <div className="col-md-8 m-auto" data-testid="login">
-                        <Avatar sx={{ m: 1, color: 'secondary.main' }}>
+                        <Avatar sx={{ m: 1 }} style={{alignSelf: 'center', backgroundColor: blue[500]}}>
                             <LockOutlinedIcon />
                         </Avatar>
                         <h1 className="display-4 text-center">Log In</h1>
                         <div className="form-group">
-                            <input
-                                className="form-control form-control-lg"
-                                type="email"
-                                placeholder="Email Address"
-                                name="email"
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
+                            <TextField label="Email" color="primary" focused type="email"
+                                       placeholder="Email Address"
+                                       name="email"
+                                       onChange={(e) => setUsername(e.target.value)}/>
+                            {/*<input*/}
+                            {/*    className="form-control form-control-lg"*/}
+                            {/*    type="email"*/}
+                            {/*    placeholder="Email Address"*/}
+                            {/*    name="email"*/}
+                            {/*    onChange={(e) => setUsername(e.target.value)}*/}
+                            {/*/>*/}
                             <br/>
                             <br/>
                         </div>
+                        <br/>
                         <div className="form-group">
-                            <input
-                                className="form-control form-control-lg"
-                                type="password"
-                                placeholder="Password"
-                                name="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
+                            <TextField label="Password" color="primary" focused type="password"
+                                       placeholder="Password"
+                                       name="password"
+                                       onChange={(e) => setPassword(e.target.value)}/>
+                            {/*<input*/}
+                            {/*    className="form-control form-control-lg"*/}
+                            {/*    type="password"*/}
+                            {/*    placeholder="Password"*/}
+                            {/*    name="password"*/}
+                            {/*    onChange={(e) => setPassword(e.target.value)}*/}
+                            {/*/>*/}
                         </div>
+                        <br/>
+                        <br/>
                         <input type="submit"
                                value="Login"
                                sx={{ mt: 3, mb: 2 }}
@@ -75,6 +92,12 @@ function Login() {
                                // onClick={onSubmit}
                         />
                     </div>
+                </div>
+                <br/>
+                <br/>
+                <div>
+                    <h4>New around here? Just create a new account</h4>
+                    <Button color="secondary" >Create Account</Button>
                 </div>
             </div>
         </div>
