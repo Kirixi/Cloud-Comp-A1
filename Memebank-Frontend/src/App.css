@@ -95,6 +95,13 @@ header {
   transform: translateX(-50%);
 }
 
+.centered {
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 800px) {
   .column {
     width: 45vw;
