@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IconButton } from '@mui/material';
-import {ArrowUpward} from "@mui/icons-material";
+import {ArrowUpward, Facebook} from "@mui/icons-material";
+import { FacebookShareButton } from "react-share";
 
 function ImgFrame({ src, h, author, id, voteNum}) {
   const [show, setShow] = useState(0);
@@ -33,9 +34,12 @@ function ImgFrame({ src, h, author, id, voteNum}) {
                 <div className={show ? '' : 'hide'}>
                     {thisVoteNum}
                 </div>
-                <div className={show ? '' : 'hide'}>
-                    {"author"}
-                </div>
+                {/*<div className={show ? '' : 'hide'}>*/}
+                {/*    {"author"}*/}
+                {/*</div>*/}
+                <FacebookShareButton url={src}>
+                    <Facebook/>
+                </FacebookShareButton>
                 <button onClick={() => window.location = src}>Download</button>
             </div>
         </div>

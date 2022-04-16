@@ -7,6 +7,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import TextField from '@mui/material/TextField';
 import {blue} from "@mui/material/colors";
 import Button from "@mui/material/Button";
+import {Link} from "@mui/material";
 
 function Login() {
 
@@ -97,7 +98,7 @@ function Login() {
                 <br/>
                 <div>
                     <h4>New around here? Just create a new account</h4>
-                    <Button color="secondary" >Create Account</Button>
+                    <Button color="secondary" href="/Register">hello</Button>
                 </div>
             </div>
         </div>
