@@ -29,12 +29,20 @@ public class ProfileRepositoryTests {
         profile.setEmail("kables@gmail.com");
         profile.setPassword("abc123");
 
+        Profile profiletwo = new Profile();
+        profiletwo.setUserName("Zemelon");
+        profiletwo.setEmail("Zemelon@gmail.com");
+        profiletwo.setPassword("abc31123");
+
+
         Profile savedProfile = repo.save(profile);
+        Profile savedProfiletwo = repo.save(profiletwo);
 
         Profile existUser = entityManager.find(Profile.class, savedProfile.getId());
 
         assertThat(profile.getEmail()).isEqualTo(existUser.getEmail());
 
     }
+
 
 }

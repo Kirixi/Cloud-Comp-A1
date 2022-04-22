@@ -1,22 +1,25 @@
 package project.Memebank.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "profile")
 public class Profile{
     @Id
-    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "userName", nullable = false, length = 10)
+    @NotBlank(message = "Username must be given")
+//    @Column(name = "userName", nullable = false, length = 10)
     private String userName;
 
-    @Column(name = "email", nullable = false, unique = true, length = 45)
+    @NotBlank(message = "Email must be given")
+//    @Column(name = "email", nullable = false, unique = true, length = 45)
     private String email;
 
-    @Column(name = "password", nullable = false, length = 64)
+    @NotBlank(message = "Password must be given")
+//    @Column(name = "password", nullable = false, length = 64)
     private String password;
 
 

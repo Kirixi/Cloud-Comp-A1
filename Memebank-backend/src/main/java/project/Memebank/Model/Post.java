@@ -1,25 +1,28 @@
 package project.Memebank.Model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "post")
 public class Post {
     @Id
-    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 10)
+    @NotNull
+    @Size(max = 60)
     private String title;
 
-    @Column(name = "url", nullable = false, unique = true, length = 45)
+    @NotNull
     private String url;
 
-    @Column(name = "likes", nullable = false)
+    @NotNull
     private int likes;
 
-    @Column(name = "user", nullable = false, length = 10)
+    @NotNull
     private String user;
 
     public Post(){
