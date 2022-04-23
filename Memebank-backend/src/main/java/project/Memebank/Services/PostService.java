@@ -32,4 +32,12 @@ public class PostService {
         return postRepo.save(post);
     }
 
+    public Post updatePost(long id) throws Exception {
+        Post post = postRepo.findById(id).orElseThrow(() -> new Exception("User not found on :: "+ id));
+
+        post.setLikes(post.getLikes() + 1 );
+
+        return postRepo.save(post);
+    }
+
 }

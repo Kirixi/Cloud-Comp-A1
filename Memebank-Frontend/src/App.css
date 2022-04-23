@@ -19,6 +19,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .column {
@@ -65,6 +66,14 @@ header {
   z-index: 1000;
   background: white;
   transform: translate(-50%, -50%);
+}
+
+.center {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .show {

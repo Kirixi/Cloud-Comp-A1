@@ -50,4 +50,16 @@ public class PostController {
         Post savedPost = postService.savePost(post);
         return new ResponseEntity<>(savedPost, HttpStatus.CREATED);
     }
+
+    @PutMapping("/LikePost/{id}")
+    public ResponseEntity<?> likePost(@PathVariable Long id) throws Exception {
+
+        try{
+            Post upadtePost = postService.updatePost(id);
+            return new ResponseEntity<>(upadtePost, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
 }

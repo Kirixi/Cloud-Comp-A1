@@ -1,9 +1,5 @@
-import React, {Fragment, useState} from "react";
-import {Avatar} from "@material-ui/core";
-import {blue} from "@mui/material/colors";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import React, {Fragment, useState} from "react"
 import TextField from "@mui/material/TextField";
-import Login from "./Login";
 
 
 function Register(){

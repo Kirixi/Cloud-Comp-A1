@@ -34,11 +34,12 @@ function ImgFrame({ src, h, author, id, voteNum}) {
                 <div className={show ? '' : 'hide'}>
                     {thisVoteNum}
                 </div>
-                {/*<div className={show ? '' : 'hide'}>*/}
-                {/*    {"author"}*/}
-                {/*</div>*/}
+                <div className={show ? '' : 'hide'}>
+                    {id}
+                </div>
                 <FacebookShareButton url={src}>
                     <Facebook/>
+
                 </FacebookShareButton>
                 <button onClick={() => window.location = src}>Download</button>
             </div>
