@@ -7,14 +7,14 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import TextField from '@mui/material/TextField';
 import {blue} from "@mui/material/colors";
 import Button from "@mui/material/Button";
-import {Link} from "@mui/material";
+
 
 function Login() {
 
-    // const postLogin = async (loginDetails) => {
-    //     return axios.post("http://localhost:8081/api/users/login", loginDetails);
-    // };
-    //
+    const postLogin = async (loginDetails) => {
+        return axios.post("http://localhost:8081/api/users/login", loginDetails);
+    };
+
     const [Username, setUsername] = useState("");
     const [Password, setPassword] = useState("");
     
@@ -22,25 +22,23 @@ function Login() {
         username: Username,
         password: Password,
     };
-    //
-    //
-    // const mutation = useMutation(() => {
-    //     return postLogin(loginDetails);
-    // });
-    //
-    // const { data: returnFromDB, isSuccess } = mutation;
-    //
-    //
-    // const onSubmit = async (data) => {
-    //     return mutation.mutate(data);
-    // };
-    //
-    // if (isSuccess === true) {
-    //     console.log(returnFromDB.data);
-    //     localStorage.setItem("token",returnFromDB.data.token);
-    //
-    //     return <Navigate to="/" replace={true} />
-    // }
+
+
+    const mutation = useMutation(() => {
+        return postLogin(loginDetails);
+    });
+
+    const { data: returnFromDB, isSuccess } = mutation;
+
+
+    const onSubmit = async (data) => {
+        return mutation.mutate(data);
+    };
+
+    if (isSuccess === true) {
+        localStorage.setItem("token",returnFromDB.data.token);
+        return <Navigate to="/" replace={true} />
+    }
 
 
     return (
@@ -60,13 +58,6 @@ function Login() {
                                        placeholder="Email Address"
                                        name="email"
                                        onChange={(e) => setUsername(e.target.value)}/>
-                            {/*<input*/}
-                            {/*    className="form-control form-control-lg"*/}
-                            {/*    type="email"*/}
-                            {/*    placeholder="Email Address"*/}
-                            {/*    name="email"*/}
-                            {/*    onChange={(e) => setUsername(e.target.value)}*/}
-                            {/*/>*/}
                             <br/>
                             <br/>
                         </div>
@@ -76,13 +67,6 @@ function Login() {
                                        placeholder="Password"
                                        name="password"
                                        onChange={(e) => setPassword(e.target.value)}/>
-                            {/*<input*/}
-                            {/*    className="form-control form-control-lg"*/}
-                            {/*    type="password"*/}
-                            {/*    placeholder="Password"*/}
-                            {/*    name="password"*/}
-                            {/*    onChange={(e) => setPassword(e.target.value)}*/}
-                            {/*/>*/}
                         </div>
                         <br/>
                         <br/>
@@ -98,7 +82,7 @@ function Login() {
                 <br/>
                 <div>
                     <h4>New around here? Just create a new account</h4>
-                    <Button color="secondary" href="/Register">hello</Button>
+                    <Button color="secondary" href="/Register">Register</Button>
                 </div>
             </div>
         </div>

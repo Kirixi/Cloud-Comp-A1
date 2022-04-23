@@ -1,18 +1,34 @@
 import React, {Fragment, useState} from "react"
 import TextField from "@mui/material/TextField";
+import axios from "axios";
+import {Navigate, useNavigate} from "react-router-dom";
 
 
 function Register(){
+    const navi = useNavigate();
     const [Username, setUsername] = useState("");
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const [cfmPassword, setCfmPassword] = useState("");
 
     const registerDetails = {
-        username: Username,
-        Email: Email,
-        password: Password
+        email: Email,
+        password: Password,
+        userName: Username
     };
+
+
+
+    const onSubmit = () =>{
+        console.log(registerDetails);
+        axios.post(`http://localhost:8080/api/profile/register`, registerDetails)
+            .then(res => {
+                console.log(res.data);
+            })
+        navi('/')
+    }
+
+
 
     return(
         <Fragment>
@@ -46,7 +62,7 @@ function Register(){
                         <br/>
                         <br/>
                         <div className="form-group">
-                            <TextField label="ConfirmPassword" color="primary" focused type="confirmpassword"
+                            <TextField label="ConfirmPassword" color="primary" focused type="password"
                                        placeholder="ConfirmPassword"
                                        name="confirmpassword"
                                        onChange={(e) => setCfmPassword(e.target.value)}/>
@@ -57,7 +73,7 @@ function Register(){
                                value="Register"
                                sx={{ mt: 3, mb: 2 }}
                                className="btn btn-info btn-block mt-4"
-                            // onClick={onSubmit}
+                            onClick={onSubmit}
                         />
                     </div>
                 </div>
