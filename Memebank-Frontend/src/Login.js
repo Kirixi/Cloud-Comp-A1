@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-import {useMutation} from "react-query";
-import { Navigate } from 'react-router-dom';
+import { useNavigate} from "react-router-dom";
 import {Avatar} from "@material-ui/core";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import TextField from '@mui/material/TextField';
@@ -11,33 +10,22 @@ import Button from "@mui/material/Button";
 
 function Login() {
 
-    const postLogin = async (loginDetails) => {
-        return axios.post("http://localhost:8081/api/users/login", loginDetails);
-    };
-
+    const navi = useNavigate();
     const [Username, setUsername] = useState("");
     const [Password, setPassword] = useState("");
     
     const loginDetails = {
-        username: Username,
+        email: Username,
         password: Password,
     };
 
-
-    const mutation = useMutation(() => {
-        return postLogin(loginDetails);
-    });
-
-    const { data: returnFromDB, isSuccess } = mutation;
-
-
-    const onSubmit = async (data) => {
-        return mutation.mutate(data);
-    };
-
-    if (isSuccess === true) {
-        localStorage.setItem("token",returnFromDB.data.token);
-        return <Navigate to="/" replace={true} />
+    const onSubmit = () =>{
+        console.log(loginDetails);
+        axios.post(`http://localhost:8080/api/profile/login`, loginDetails)
+            .then(res => {
+                console.log(res.data);
+                localStorage.setItem("Username", res.data);
+            })
     }
 
 
@@ -74,7 +62,7 @@ function Login() {
                                value="Login"
                                sx={{ mt: 3, mb: 2 }}
                                className="btn btn-info btn-block mt-4"
-                               // onClick={onSubmit}
+                               onClick={onSubmit}
                         />
                     </div>
                 </div>

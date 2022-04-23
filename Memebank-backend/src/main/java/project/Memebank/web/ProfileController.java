@@ -40,6 +40,25 @@ public class ProfileController {
         return new ResponseEntity<>(profile, HttpStatus.CREATED);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> processLogin(@RequestBody Profile profile) {
+
+        Profile existingProfile = profileRepo.findByEmail(profile.getEmail());
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+
+        if(passwordEncoder.matches(profile.getPassword(), existingProfile.getPassword())) {
+            return new ResponseEntity<>(existingProfile.getUserName(), HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+
+
+    }
+
     @GetMapping("/getAllUsers")
     public ResponseEntity<?> getAllUsers(){
         List<Profile> users = profileService.getAllUsers();

@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from "react"
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-import {Navigate, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 
 function Register(){
@@ -16,7 +16,6 @@ function Register(){
         password: Password,
         userName: Username
     };
-
 
 
     const onSubmit = () =>{
