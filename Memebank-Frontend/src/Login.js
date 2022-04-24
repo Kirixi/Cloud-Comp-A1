@@ -26,6 +26,8 @@ function Login() {
                 console.log(res.data);
                 localStorage.setItem("Username", res.data);
             })
+        
+        navi('/');
     }
 
 

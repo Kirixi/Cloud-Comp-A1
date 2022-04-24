@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import project.Memebank.Model.Post;
 import project.Memebank.Model.PostRepository;
 import project.Memebank.Services.PostService;
@@ -18,7 +19,6 @@ public class PostController {
 
     @Autowired
     private PostRepository postRepo;
-
     @Autowired
     private PostService postService;
 
@@ -46,9 +46,9 @@ public class PostController {
     }
 
     @PostMapping("/CreatePost")
-    public ResponseEntity<?> createPost(@RequestBody Post post){
-        Post savedPost = postService.savePost(post);
-        return new ResponseEntity<>(savedPost, HttpStatus.CREATED);
+    public ResponseEntity<?> createPost(@RequestParam MultipartFile file, @RequestParam String user,  @RequestParam String title){
+        Post savedPost = postService.savePost(title, user, file);
+        return new ResponseEntity<>(savedPost.getTitle(), HttpStatus.CREATED);
     }
 
     @PutMapping("/LikePost/{id}")
@@ -62,4 +62,6 @@ public class PostController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
+
+
 }
